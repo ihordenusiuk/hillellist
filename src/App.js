@@ -4,7 +4,8 @@ import {users} from "./Components/list"
 
 function App() {
   let userList = users.map((elem, i)=>{
-    <list 
+    i++
+    return <StudentBlock 
     key = {i}
     name = {elem.name}
     img = {elem.img}
@@ -12,6 +13,8 @@ function App() {
     score = {elem.homeworks.reduce((q,w)=>q + w, 0)}
     />
   }).sort((a, b)=> b.props.score - a.props.score)
+    
+  
   return (
     <div className='wrapper'>
       <h3 className='heading'>Рейтинг групи</h3>
@@ -19,9 +22,9 @@ function App() {
         <div className='studets_text'>Студент</div>
         <div className='studets_hw'>Домашки/бали</div>
       </div>
-      <ol className='students_list'>
-        {userList}
-      </ol>
+      <table className='students_list'>
+        <tbody>{userList}</tbody>
+      </table>
     </div>
   );
 }
